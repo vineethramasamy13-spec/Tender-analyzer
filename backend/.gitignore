@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+uploads/*
+!uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+chroma_data/
+*.db
+.pytest_cache/
+tenders_cache.json

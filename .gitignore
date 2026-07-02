@@ -1,0 +1,30 @@
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python dependency folders & cache
+backend/.venv/
+backend/venv/
+backend/env/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node dependency folders & builds
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Local media / logs / user data
+backend/uploads/
+backend/reports/
+backend/logs/
+*.log
+.system_generated/
+
+# Local scripts
+start.bat
