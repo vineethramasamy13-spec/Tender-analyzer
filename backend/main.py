@@ -112,15 +112,21 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # CORS Middleware config
 allow_origins = [settings.FRONTEND_URL]
-if "http://localhost:3000" not in allow_origins:
-    allow_origins.append("http://localhost:3000")
-if "http://127.0.0.1:3000" not in allow_origins:
-    allow_origins.append("http://127.0.0.1:3000")
+for origin in [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]:
+    if origin not in allow_origins:
+        allow_origins.append(origin)
+
+# In production also allow all Vercel preview URLs
+if settings.is_production:
+    allow_origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allow_origins,
-    allow_credentials=True,
+    allow_credentials=not settings.is_production,  # credentials require explicit origins
     allow_methods=["GET", "POST", "PUT", "DELETE", "PATCH"],
     allow_headers=["Authorization", "Content-Type"],
 )

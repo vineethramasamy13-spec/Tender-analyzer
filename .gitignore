@@ -23,6 +23,8 @@ frontend/build/
 backend/uploads/
 backend/reports/
 backend/logs/
+backend/tenders_cache.json
+backend/chroma_data/
 *.log
 .system_generated/
 
